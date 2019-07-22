@@ -14,6 +14,6 @@ The user then has the possibility to save the result in the database.
 
 ## Features : 
 * Food search in the Open Food Facts database.
-* The user interacts with the program in the terminal, but if you want to develop a graphical interface you can,
-* If the user enters a character that is not a digit, the program must repeat the question,
-* The search must be done on a MySQL basis.
+* The user interacts with the program in the terminal
+* If the user enters a character that is not a digit, the program repeat the question
+* The search are done on a MySQL basis.
