@@ -17,3 +17,26 @@ The user then has the possibility to save the result in the database.
 * The user interacts with the program in the terminal
 * If the user enters a character that is not a digit, the program repeat the question
 * The search are done on a MySQL basis.
+
+## Behavior driven development :
+
+### found_food_substitute :
+
+1. **Given** 
+2. **When**
+3. **Then**
+---
+
+### record_food_substitute_found :
+
+1. **Given** 
+2. **When**
+3. **Then**
+---
+
+### found_recorded_subsitute_food :
+
+1. **Given** 
+2. **When**
+3. **Then**
+---
