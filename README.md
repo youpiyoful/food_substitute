@@ -1,9 +1,9 @@
 # food_substitute
 
 ## App description :
-This program allow you to replace food by substitute in two steps : 
-1. Which food do you want to replace?
-2. Find my substituted foods.
+This program offers you 2 functionalities : 
+1. Which food do you want to replace ?
+2. Record substitute food
 
 The user selects 1. The program asks the user the following questions and the user selects the answers:
 
@@ -31,8 +31,8 @@ The user then has the possibility to save the result in the database.
 
 #### triggering_questions:
 1. **Given** a user want found a substitute food
-2. **When** he selects the choice number 1  
-3. **Then** the program asks questions
+2. **When** he selects the choice number 1 corresponding to "found a substitute food"
+3. **Then** the program offers a choice of food categories
 ---
 
 #### select_category_of_food :
