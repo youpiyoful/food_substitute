@@ -60,13 +60,42 @@ a link to the Open Food Facts page about that food.
 
 1. **Given** a user has found a substitute food
 2. **And** he wants to save it
-2. **When** he selects "save food substitute found"
+2. **When** he selects the number corresponding to "save food substitute found"
 3. **Then** the program save the article in a specific place
 ---
 
 ### found_recorded_subsitute_food :
 
 1. **Given** a user wants to find substituted registered foods
-2. **When** he selects the choice number 2 (found registered susbstitute foods)
+2. **When** he selects the choice number 2 corresponding to found registered susbstitute foods
 3. **Then** the program shows him **all** the substituted foods saved
 ---
+
+## DATA
+
+### Retrieve data from open food facts :
+1. Go to open food facts (https://fr.openfoodfacts.org/data)
+2. Download the csv https://fr.openfoodfacts.org/data/fr.openfoodfacts.org.products.csv
+
+### Build data base 
+1. use for retrieve data
+2. build mcd
+3. create script sql corresponding to mcd
+4. launch script
+
+### Use data base :
+
+#### Save substitute food in table "my_substitute_food":
+1. make sql request for insert data
+
+#### Found my substitute food : 
+1. make an sql request for select all data in the table
+
+#### Program proposes categories : 
+1. make an sql request for select all categories
+
+#### Program proposes food :
+1. make an sql request for select all food than corresponding to chosen category
+
+#### Program show element to substitute food : 
+1. make an sql request for select all data of a substitute food
