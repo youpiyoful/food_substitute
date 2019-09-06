@@ -27,7 +27,7 @@ The user then has the possibility to save the result in the database.
 3. **Then** the program proposes to take the next step 
 ---
 
-### wrong selection (valid for all user / program interactions)  :
+### wrong selection (valid for all user / program interactions) :
 1. **Given** a user want make a choice
 2. **when** he enters a character that is not a number
 3. **Or** he enters a number that out of range
