@@ -29,7 +29,7 @@ The user then has the possibility to save the result in the database.
 
 ### wrong selection (valid for all user / program interactions) :
 1. **Given** a user want make a choice
-2. **when** he enters a character that is not a number
+2. **When** he enters a character that is not a number
 3. **Or** he enters a number that out of range
 3. **Then** the program must repeat the question 
 ---
@@ -75,27 +75,34 @@ a link to the Open Food Facts page about that food.
 
 ### Retrieve data from open food facts :
 1. Go to open food facts (https://fr.openfoodfacts.org/data)
-2. Download the csv https://fr.openfoodfacts.org/data/fr.openfoodfacts.org.products.csv
+2. Use requests to get data from api \
+__exemple :__ https://fr.openfoodfacts.org/api/v0/category/pizza/1.json
 
 ### Build data base 
-1. use for retrieve data
-2. build mcd
+1. use api open food facts for retrieve data
+2. build mcd / mld
 3. create script sql corresponding to mcd
-4. launch script
+4. launch script in mysql shell
 
 ### Use data base :
 
 #### Save substitute food in table "my_substitute_food":
-1. make sql request for insert data
+1. make sql request for insert data in table food_substitute
+2. insert id_food to substitute like id_food
+3. insert id food of substitute like id_food_substitute
 
 #### Found my substitute food : 
-1. make an sql request for select all data in the table
+1. make a request for select all record in substitute_food table
+2. with the id food to subsituted food retrieve only the name and the nutrient from food table
+3. with the id_food_substitute retrieve all data of this food from food table
 
 #### Program proposes categories : 
-1. make an sql request for select all categories
+1. make an sql request for select all categories from category table
 
 #### Program proposes food :
-1. make an sql request for select all food than corresponding to chosen category
+1.  make an sql request for select name of all foods than have id_cateory corresponding to the user choice
 
 #### Program show element to substitute food : 
-1. make an sql request for select all data of a substitute food
+1. select all nutriscore of food
+2. compare the nutriscore
+3. select all data for the food with the id category selected who have the best nutriscore.
