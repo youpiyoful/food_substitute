@@ -72,6 +72,7 @@ a link to the Open Food Facts page about that food.
 ---
 
 ## DATA
+__official documentation :__ https://en.wiki.openfoodfacts.org/API/Read
 
 ### Retrieve data from open food facts :
 1. Go to open food facts (https://fr.openfoodfacts.org/data)

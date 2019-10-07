@@ -12,6 +12,7 @@ def retrieve_all_category_name_from_open_food_facts_api():
     response = requests.get('https://fr.openfoodfacts.org/v0/categories.json')
     list_of_category = response.json().get('tags')
     list_of_category_names = []
+
     for category in list_of_category:
         name_category = category.get('name')
         list_of_category_names.append(name_category)
