@@ -1,7 +1,7 @@
 import mysql.connector
+
 import category
 import food
-
 from config import config
 
 Error = mysql.connector.Error
@@ -21,7 +21,9 @@ class ManageFood:
             cursor.execute(query)
             results = cursor.fetchall()[0]
             myDb.commit()
-            food_by_name = food.Food(results[0], results[1], results[2], results[3], results[4], results[5], results[6])
+            food_by_name = food.Food(id_food=results[0], product_name=results[1], generic_name=results[2],
+                                     stores_tags=results[3], url=results[4], nutrigrade=results[5],
+                                     id_category=results[6])
             print(results)
             return food_by_name
 
@@ -30,25 +32,35 @@ class ManageFood:
             print(message)
 
     @staticmethod
-    def insert_food_from_open_food_facts(food_object):
+    def insert_food_from_open_food_facts(new_food):
         """
-        take a food object and insert it into the database
-        :param food_object:
+        take a new food and insert it into the database
+        :param new_food:
         :return:
         """
-        try:
-            cursor = myDb.cursor()
-            query = f"""INSERT INTO food(product_name, generic_name, stores_tags, url, nutrition_grades, id_category)
-                        values("{food_object.product_name}", "{food_object.generic_name}", "{food_object.stores_tags}",
-                        "{food_object.url}", "{food_object.nutrition_grades}", "{food_object.id_category}");"""
-            cursor.execute(query)
-            myDb.commit()
-            message = "insert_food_from_open_food_facts success"
-            print(message)
+        product_name = new_food.get('product_name')
+        generic_name = new_food.get('generic_name')
+        stores_tags = new_food.get('stores_tags')
+        url = new_food.get('url')
+        nutrition_grades = new_food.get('nutrition_grades')
+        id_category = new_food.get('id_category')
 
-        except Error as e:
-            message = f"Error inserting food : {e}"
-            print(message)
+        if product_name and generic_name and stores_tags and url and nutrition_grades and id_category:  # obvious data
+
+            try:
+                cursor = myDb.cursor()
+                query = f"""INSERT INTO food(product_name, generic_name, stores_tags, url,
+                            nutrition_grades, id_category)
+                            values("{product_name}", "{generic_name}", "{stores_tags}",
+                            "{url}", "{nutrition_grades}", "{id_category}");"""
+                cursor.execute(query)
+                myDb.commit()
+                message = "insert_food_from_open_food_facts success"
+                print(message)
+
+            except Error as e:
+                message = f"Error inserting food : {e}"
+                print(message)
 
 
 class ManageCategories:
@@ -59,18 +71,21 @@ class ManageCategories:
 
         try:
             cursor = myDb.cursor()
-            query = f"""SELECT id_category, name
+            query = f"""SELECT id_category, name, url_category
                         FROM category;"""
             cursor.execute(query)
             results = cursor.fetchall()
             myDb.commit()
-            print(results)
+            # print(results)
             array_of_categories = []
 
             for result in results:
-                category_object = category.Category(result[0], result[1])
+                result[2].replace("'", "''")
+                category_object = category.Category(id_category=result[0], category_name=result[1],
+                                                    url_category=result[2])
                 array_of_categories.append(category_object)
 
+            print(array_of_categories)
             return array_of_categories
 
         except Error as e:
@@ -78,21 +93,26 @@ class ManageCategories:
             print(message)
 
     @staticmethod
-    def insert_category_from_open_food_facts(category_object):
+    def insert_category_from_open_food_facts(new_category):
         """
         take a food object and insert it into the database
-        :param category_object:
+        :param new_category:
         :return:
         """
-        try:
-            cursor = myDb.cursor()
-            query = f"""INSERT INTO category(name)
-                        values("{category_object.category_name}")"""
-            cursor.execute(query)
-            myDb.commit()
-            message = "insert_food_from_open_food_facts success"
-            print(message)
+        category_name = new_category.get('category_name')
+        url_category = new_category.get('url_category')
 
-        except Error as e:
-            message = f"Error inserting food : {e}"
-            print(message)
+        if category_name and url_category:
+
+            try:
+                cursor = myDb.cursor()
+                query = f"""INSERT INTO category(name, url_category)
+                            values("{category_name}", "{url_category}")"""
+                cursor.execute(query)
+                myDb.commit()
+                message = "insert_food_from_open_food_facts success"
+                print(message)
+
+            except Error as e:
+                message = f"Error inserting food : {e}"
+                print(message)
