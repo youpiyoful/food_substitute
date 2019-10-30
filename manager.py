@@ -70,6 +70,29 @@ class ManageFood:
                 message = f"Error inserting food : {e}"
                 print(message)
 
+    @staticmethod
+    def record_substitute_food(id_food, id_food_substitute):
+        """
+
+        :param id_food:
+        :param id_food_substitute:
+        :return message:
+        """
+        try:
+            cursor = myDb.cursor()
+            query = f"""INSERT INTO foods.a_substitute(`id_food food`, `id_food substitute`)
+                        VALUES({id_food}, {id_food_substitute});
+                    """
+            cursor.execute(query)
+            myDb.commit()
+            message = f"substitute is correctly record"
+
+        except Error:
+            message = f"you have already record this substitution"
+
+        return message
+
+
 
 class ManageCategories:
 

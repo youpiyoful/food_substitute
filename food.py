@@ -35,19 +35,24 @@ class Food:
         :param list_of_food:
         :return:
         """
-        list_of_id_of_best_food = []
+        # list_of_id_of_best_food = []
+        list_of_nutriscore_of_best_food = []
 
         for food_object in list_of_food:
+            # print(food_object.nutrigrade)
 
-            if food_object.nutrigrade < self.nutrigrade:
-                list_of_id_of_best_food.append(food_object.id_food)
+            if food_object.nutrigrade <= self.nutrigrade:
+                list_of_nutriscore_of_best_food.append(food_object.nutrigrade)
+                # list_of_id_of_best_food.append(food_object.id_food)
 
-        if list_of_id_of_best_food:
-            id_of_best_food = min(list_of_id_of_best_food)
+        print(list_of_nutriscore_of_best_food)
+        if list_of_nutriscore_of_best_food:  # verify if best food exist
+            nutriscore_of_best_food = min(list_of_nutriscore_of_best_food)
+            print(nutriscore_of_best_food)
 
             for food_object in list_of_food:
 
-                if id_of_best_food == food_object.id_food:
+                if nutriscore_of_best_food == food_object.nutrigrade:
                     return food_object
 
         else:
