@@ -12,20 +12,28 @@ myDb = mysql.connector.connect(user=config.get('user'), password=config.get('pas
 class ManageFood:
 
     @staticmethod
-    def get_food_by_name(product_name):
-        """Select food in table food by the product name"""
+    def get_food_by_id_category(id_category):
+        """
+        Select food in table food by the id of category
+        :param id_category:
+        :return:
+        """
         try:
             cursor = myDb.cursor()
             query = f"""SELECT id_food, product_name, generic_name, stores_tags, url, nutrition_grades, id_category
-                        FROM food WHERE product_name = "{product_name}";"""
+                        FROM food WHERE id_category = {id_category};"""
             cursor.execute(query)
-            results = cursor.fetchall()[0]
+            results = cursor.fetchall()
+            # print(results)
             myDb.commit()
-            food_by_name = food.Food(id_food=results[0], product_name=results[1], generic_name=results[2],
-                                     stores_tags=results[3], url=results[4], nutrigrade=results[5],
-                                     id_category=results[6])
-            print(results)
-            return food_by_name
+            list_of_food_by_category = []
+            for result in results:
+                food_by_id_category = food.Food(id_food=result[0], product_name=result[1], generic_name=result[2],
+                                                stores_tags=result[3], url=result[4], nutrigrade=result[5],
+                                                id_category=result[6])
+                list_of_food_by_category.append(food_by_id_category)
+            # print(results)
+            return list_of_food_by_category
 
         except Error as e:
             message = f"select food encounter a mysql error : {e}"
@@ -45,7 +53,7 @@ class ManageFood:
         nutrition_grades = new_food.get('nutrition_grades')
         id_category = new_food.get('id_category')
 
-        if product_name and generic_name and stores_tags and url and nutrition_grades and id_category:  # obvious data
+        if product_name and generic_name and url and nutrition_grades and id_category:  # obvious data
 
             try:
                 cursor = myDb.cursor()
@@ -85,7 +93,36 @@ class ManageCategories:
                                                     url_category=result[2])
                 array_of_categories.append(category_object)
 
-            print(array_of_categories)
+            # print(array_of_categories)
+            return array_of_categories
+
+        except Error as e:
+            message = f"select category encounter a mysql error : {e}"
+            print(message)
+
+    @staticmethod
+    def get_category_where_they_contain_15_food_min():
+        """Select category in table category by the product name"""
+
+        try:
+            cursor = myDb.cursor()
+            query = f"""select c.id_category, c.name, c.url_category from category as c 
+                        where c.id_category in (
+                            select f.id_category from food as f group by id_category HAVING count(*) >= 15
+                        )"""
+            cursor.execute(query)
+            results = cursor.fetchall()
+            myDb.commit()
+            # print(results)
+            array_of_categories = []
+
+            for result in results:
+                result[2].replace("'", "''")
+                category_object = category.Category(id_category=result[0], category_name=result[1],
+                                                    url_category=result[2])
+                array_of_categories.append(category_object)
+
+            # print(array_of_categories)
             return array_of_categories
 
         except Error as e:
