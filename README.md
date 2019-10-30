@@ -18,6 +18,11 @@ The user then has the possibility to save the result in the database.
 * If the user enters a character that is not a digit, the program repeat the question
 * The search are done on a MySQL basis.
 
+## Setup
+- you need to configure your database connection in a dict in config.py
+- you can modify the interesting list in the config.py
+- you can modify value of the object OpenFoodFacts in config.py (if you don't value default exist)
+
 ## Behavior driven development :
 
 ### start_use_program:
