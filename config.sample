@@ -1,0 +1,14 @@
+__exemple of config.py (replace by the good values)
+
+list_of_keywords_interesting = ['Céréales', 'végétaux', 'Fruits', 'végétale', 'légumes']
+
+config = {
+    'user': '<username>',
+    'password': '<password>',
+    'host': '<ipaddress or address>',
+    'port': <int port>,
+    'database': <'database name'>
+}
+
+url_categories = <'https://fr.openfoodfacts.org/categories.json'>  # param of object OpenFoodFact
+number_min_food_by_category = <10>  # param of object OpenFoodFact
