@@ -34,25 +34,13 @@ class OpenFoodFact:
         """
         list_of_food_by_category = []
         num_page = 1
-        number_of_product = 0
-
-        # maximum_time = 10
-        # tick = time.time()
-        # todo verify number of product by page
 
         while len(list_of_food_by_category) <= self.number_min_food_by_category:
             response = requests.get(url_category + '/' + str(num_page) + '.json')
             list_of_food = response.json().get('products')
             print('list of food : ', list_of_food)
-            # number_of_product += len(list_of_food)
-            # print('number of product : ', number_of_product)
             num_page += 1
             print('number of page : ', num_page)
-            # print(tick)
-            # passed_time = time.time() - tick
-            # print(passed_time)
-            # if passed_time > maximum_time:
-            #     break
 
             if len(list_of_food) == 0:
                 break
