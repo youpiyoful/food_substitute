@@ -46,7 +46,7 @@ The user then has the possibility to save the result in the database.
 
 #### triggering_questions:
 1. **Given** a user want found a substitute food
-2. **When** he selects the choice number 1 corresponding to "found a substitute food"
+2. **When** he selects the choice number 2 corresponding to "found a substitute food"
 3. **Then** the program offers a choice of food categories
 ---
 
@@ -54,13 +54,13 @@ The user then has the possibility to save the result in the database.
 #### select_category_of_food :
 1. **Given** a user want select a category of food to substitute
 2. **When** he selects the number corresponding to one of them
-3. **Then** the program offers a choice of substitute foods
+3. **Then** the program offers a choice of foods than can be substituted
 ---
 
 #### select_a_food :
 1. **Given** a user want select a food to substitute
 2. **When** he select the number corresponding to the chosen food
-3. **Then** The program offers a substitute, its description, a store or buy it (if any) and
+3. **Then** the program offers a substitute, its description, a store where buy it (if any) and
 a link to the Open Food Facts page about that food.
 ---
 
@@ -68,14 +68,22 @@ a link to the Open Food Facts page about that food.
 
 1. **Given** a user has found a substitute food
 2. **And** he wants to save it
-2. **When** he selects the number corresponding to "save food substitute found"
-3. **Then** the program save the article in a specific place
+3. **When** he select the answer 'y' corresponding to "save food substitute found"
+4. **Then** the program save the article in a specific place
+5. **And** the program ends
 ---
+
+### don't record substitute food found :
+1. **Given** a user has foud a substitute food found
+2. **And** he don't want save it
+3. **When** he select the answer 'n' corresponding to "don't record substitute food"
+4. **Then** the program don't save the article
+5. **And** the program ends
 
 ### found_recorded_subsitute_food :
 
 1. **Given** a user wants to find substituted registered foods
-2. **When** he selects the choice number 2 corresponding to found registered susbstitute foods
+2. **When** he selects the choice number 1 corresponding to found registered susbstitute foods
 3. **Then** the program shows him **all** the substituted foods saved
 ---
 
@@ -87,10 +95,10 @@ __official documentation :__ https://en.wiki.openfoodfacts.org/API/Read
 2. Use requests to get data from api \
 __exemple :__ https://fr.openfoodfacts.org/api/v0/category/pizza/1.json
 
-### Build data base 
+### Create archi and build data base
 1. use api open food facts for retrieve data
 2. build mcd / mld
-3. create script sql corresponding to mcd
+3. create script sql corresponding to mcd / mld
 4. launch script in mysql shell
 
 ### Use data base :
