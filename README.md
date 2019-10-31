@@ -20,8 +20,11 @@ The user then has the possibility to save the result in the database.
 
 ## Setup
 - you need to configure your database connection in a dict in config.py
+- Use the sql script for create database and table
+- Launch setup.py for populate your database.
 - you can modify the interesting list in the config.py
-- you can modify value of the object OpenFoodFacts in config.py (if you don't value default exist)
+- you can modify value of the object OpenFoodFacts in config.py (if you don't do that,  value
+ default exist)
 
 ## Behavior driven development :
 
