@@ -42,10 +42,8 @@ class Food:
             if food_object.nutrigrade <= self.nutrigrade:
                 list_of_nutriscore_of_best_food.append(food_object.nutrigrade)
 
-        print(list_of_nutriscore_of_best_food)
         if list_of_nutriscore_of_best_food:  # verify if best food exist
             nutriscore_of_best_food = min(list_of_nutriscore_of_best_food)
-            print(nutriscore_of_best_food)
 
             for food_object in list_of_food:  # run list food to return object with min nutriscore
 
