@@ -47,7 +47,7 @@ class Food:
             nutriscore_of_best_food = min(list_of_nutriscore_of_best_food)
             print(nutriscore_of_best_food)
 
-            for food_object in list_of_food:
+            for food_object in list_of_food:  # run list food to return object with min nutriscore
 
                 if nutriscore_of_best_food == food_object.nutrigrade:
                     return food_object
