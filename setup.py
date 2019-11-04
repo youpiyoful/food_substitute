@@ -42,5 +42,6 @@ def retrieve_food_from_open_food_facts_and_insert_in_our_db():
         for food in list_of_food_by_category:
             MANAGE_FOOD.insert_food_from_open_food_facts(food)
 
-# retrieve_food_from_open_food_facts_and_insert_in_our_db()
-# retrieve_categories_from_open_food_facts_and_insert_in_our_db()
+
+retrieve_food_from_open_food_facts_and_insert_in_our_db()
+retrieve_categories_from_open_food_facts_and_insert_in_our_db()
