@@ -87,6 +87,3 @@ class OpenFoodFact:
 
         return list_of_interesting_category
 
-# response = OpenFoodFact()
-# response.retrieve_all_category_name_from_open_food_facts_api()
-# print(response.filter_category_by_interest(response, list_of_keywords_interesting))
