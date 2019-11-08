@@ -92,32 +92,40 @@ def main():
                 if food_choice == str(food_by_id_category.id_food):
                     best_food = food_by_id_category.get_food_best_than_me(
                         list_of_food_by_id_category)
-                    print('')
-                    print('              BEST FOOD IF IT EXISTS              ')
-                    print('')
-                    print('id_food          : ', best_food.id_food)
-                    print('product_name     : ', best_food.product_name)
-                    print('generic name     : ', best_food.generic_name)
-                    print('stores_tags      : ', best_food.stores_tags)
-                    print('link to product  : ', best_food.url)
-                    print('nutriscore-score : ', best_food.nutrigrade)
-                    print('id_category      : ', best_food.id_category)
-                    print('')
 
-            #  4th step of the program, which proposes to the user to save the substitution he
-            #  has just made
-            while good_answer is False:
-                response_to_record = input('Want you record substitute food ? y/n : ')
+                    if best_food:
+                        print('')
+                        print('              BEST FOOD             ')
+                        print('')
+                        print('id_food          : ', best_food.id_food)
+                        print('product_name     : ', best_food.product_name)
+                        print('generic name     : ', best_food.generic_name)
+                        print('stores_tags      : ', best_food.stores_tags)
+                        print('link to product  : ', best_food.url)
+                        print('nutriscore-score : ', best_food.nutrigrade)
+                        print('id_category      : ', best_food.id_category)
+                        print('')
 
-                if response_to_record == 'y':
-                    record_response = MANAGE_FOOD.record_substitute_food(food_choice,
-                                                                         best_food.id_food)
-                    print(record_response)
-                    good_answer = True
+                        #  4th step of the program, which proposes to the user to save the
+                        #  substitution he
+                        #  has just made
+                        while good_answer is False:
+                            response_to_record = input('Want you record substitute food ? y/n : ')
 
-                if response_to_record == 'n':
-                    print('don\'t record subsitute')
-                    good_answer = True
+                            if response_to_record == 'y':
+                                record_response = MANAGE_FOOD.record_substitute_food(food_choice,
+                                                                                     best_food.id_food)
+                                print(record_response)
+                                good_answer = True
+
+                            if response_to_record == 'n':
+                                print('don\'t record subsitute')
+                                good_answer = True
+
+                    else:
+                        print('')
+                        print('               ANY BEST FOOD        ')
+                        print('')
 
         # part that displays the substitutions already made
         else:
