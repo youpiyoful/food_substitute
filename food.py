@@ -2,7 +2,13 @@
 
 
 class Food:
-    """Representation of food entity"""
+    """
+    Representation of food entity
+    >>> food = Food(1, 'apple', 'green_apple', [], 'https:test.test', -15, 1)
+    >>> (food.product_name, food.id_food, food.generic_name, food.stores_tags, food.url,
+    ... food.nutrigrade, food.id_category)
+    ('apple', 1, 'green_apple', [], 'https:test.test', -15, 1)
+    """
 
     def __init__(self, id_food, product_name,
                  generic_name, stores_tags, url, nutrigrade, id_category):
@@ -26,20 +32,31 @@ class Food:
 
     @staticmethod
     def its_ok():
-        """Test than object work"""
+        """
+        Test than object work
+        >>> food = Food(1, 'apple', 'green_apple', [], 'https:test.test', -15, 1)
+        >>> food.its_ok()
+        "it's ok"
+        """
         return 'it\'s ok'
 
     def get_food_best_than_me(self, list_of_food):
         """
         calcul the food than have the best nutriscore
         :param list_of_food:
-        :return:
+        :returns best_food_object or self:
+        >>> food = Food(1, 'apple', 'green_apple', [], 'https:test.test', -15, 1)
+        >>> food2 = Food(2, 'banana', 'banana', [], 'https:test.test', -10, 1)
+        >>> food3 = Food(3, 'orange', 'orange', [], 'https:test.test', -16, 1)
+        >>> response = food.get_food_best_than_me([food2, food3])
+        >>> (response.product_name, response.nutrigrade)
+        ('orange', -16)
         """
         list_of_nutriscore_of_best_food = []
 
         for food_object in list_of_food:
 
-            if food_object.nutrigrade <= self.nutrigrade:
+            if food_object.nutrigrade < self.nutrigrade:
                 list_of_nutriscore_of_best_food.append(food_object.nutrigrade)
 
         if list_of_nutriscore_of_best_food:  # verify if best food exist
@@ -51,4 +68,4 @@ class Food:
                     return food_object
 
         else:
-            return self
+            return None
