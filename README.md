@@ -19,11 +19,11 @@ The user then has the possibility to save the result in the database.
 * The search are done on a MySQL basis.
 
 ## Setup
-- you need to configure your database connection in a dict in config.py
+- You need to configure your database connection in a dict in config.py
 - Use the sql script for create database and table
+- You can modify the interesting list in the config.py
 - Launch setup.py for populate your database.
-- you can modify the interesting list in the config.py
-- you can modify value of the object OpenFoodFacts in config.py (if you don't do that,  value
+- You can modify value of the object OpenFoodFacts in config.py (if you don't do that,  value
  default exist)
 
 ## Behavior driven development :
