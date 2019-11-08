@@ -42,9 +42,8 @@ def main():
         while good_answer is False:  # while good answer is false the loop continue
             print('')
             start_choice = input(
-                'For consult your substitution record push 1 | For launch the program of '
-                'substitution '
-                'push 2 : ')  # offers 2 choices at user
+                'Pour consulter vos substituts enregistrés tapez 1 | Pour lancer le programme de '
+                'substitution tapez 2 : ')  # offers 2 choices at user
             print('')
 
             if start_choice == '1' or start_choice == '2':  # if user do an offer choice,
@@ -64,7 +63,8 @@ def main():
 
             while category_choice not in list_of_id_category:  # choice of the category
                 print('')
-                category_choice = input('Enter the num of your choice : ')
+                category_choice = input('Entrer le nombre correspondant à la catégorie de votre '
+                                        'choix : ')
                 print('')
 
             # use method of ManageFood than instantiate Food object with data requested in db
@@ -82,7 +82,7 @@ def main():
                 print('')
                 # don't convert the user's choice to an integer, even if it's necessary later,
                 # to be able to manage the erroneous choices
-                food_choice = input('Enter the num of your choice : ')
+                food_choice = input('Entrer le nombre correspondant à l\'aliment de votre choix : ')
                 print('')
 
             # displays the substitute food of the user's chosen food only if it offers a better
@@ -95,36 +95,36 @@ def main():
 
                     if best_food:
                         print('')
-                        print('              BEST FOOD             ')
+                        print('             MEILLEUR ALIMENT             ')
                         print('')
-                        print('id_food          : ', best_food.id_food)
-                        print('product_name     : ', best_food.product_name)
-                        print('generic name     : ', best_food.generic_name)
-                        print('stores_tags      : ', best_food.stores_tags)
-                        print('link to product  : ', best_food.url)
-                        print('nutriscore-score : ', best_food.nutrigrade)
-                        print('id_category      : ', best_food.id_category)
+                        print('Id aliment           : ', best_food.id_food)
+                        print('Nom du produit       : ', best_food.product_name)
+                        # print('Nom générique      : ', best_food.generic_name)
+                        print('Magasins             : ', best_food.stores_tags)
+                        print('Lien vers le produit : ', best_food.url)
+                        print('Nutriscore           : ', best_food.nutrigrade)
+                        print('Id categorie         : ', best_food.id_category)
                         print('')
 
                         #  4th step of the program, which proposes to the user to save the
                         #  substitution he
                         #  has just made
                         while good_answer is False:
-                            response_to_record = input('Want you record substitute food ? y/n : ')
+                            response_to_record = input('Voulez enregistrer le substitut ? o/n : ')
 
-                            if response_to_record == 'y':
+                            if response_to_record == 'o':
                                 record_response = MANAGE_FOOD.record_substitute_food(food_choice,
                                                                                      best_food.id_food)
                                 print(record_response)
                                 good_answer = True
 
                             if response_to_record == 'n':
-                                print('don\'t record subsitute')
+                                print('Substitut non enregistré')
                                 good_answer = True
 
                     else:
                         print('')
-                        print('               ANY BEST FOOD        ')
+                        print('                 AUCUN MEILLEUR ALIMENT TROUVÉ        ')
                         print('')
 
         # part that displays the substitutions already made
@@ -135,36 +135,36 @@ def main():
 
             for substitute_el in substitutes_elements:  # formats the display
                 print('---------------------------------------------------------------------------')
-                print('category name            : ', substitute_el[0])
-                print('product name substituted : ', substitute_el[1])
-                print('substitute product name  : ', substitute_el[2])
-                print('generic_name             : ', substitute_el[3])
-                print('nutrition_grades         : ', substitute_el[4])
-                print('stores_tags              : ', substitute_el[5])
-                print('link                     : ', substitute_el[6])
+                print('Nom de la catégorie            : ', substitute_el[0])
+                print('Nom du produit substitué       : ', substitute_el[1])
+                print('Nom du subsitut                : ', substitute_el[2])
+                # print('generic_name             : ', substitute_el[3])
+                print('Nutriscore substitut           : ', substitute_el[4])
+                print('Magasins                       : ', substitute_el[5])
+                print('Lien vers le produit           : ', substitute_el[6])
                 print('---------------------------------------------------------------------------')
 
         good_answer = False  # reset the control variable
 
         # last step that proposes to leave the program or return to the menu in the main loop
         while good_answer is False:
-            leave_or_no = input('Have you finished ? (y/n): ')  # listen user's choice
+            leave_or_no = input('Avez-vous finis ? (o/n): ')  # listen user's choice
 
-            if leave_or_no == 'y' or leave_or_no == 'n':  # control than answer is good
+            if leave_or_no == 'o' or leave_or_no == 'n':  # control than answer is good
                 good_answer = True
 
-        if leave_or_no == 'y':  # verify if the user want leave the program
+        if leave_or_no == 'o':  # verify if the user want leave the program
             # sets the program_on variable to false, which results in quitting the program
             # because the initial condition of the first loop is no longer satisfied
             program_on = False
 
         else:  # if answer is no the program comeback to the menu
             print('')
-            print('                    COMEBACK TO THE MENU          ')
+            print('                    RETOUR AU MENU             ')
             print('')
 
     print('')
-    print('                       END                   ')
+    print('                       FIN                   ')
     print('')
 
 
